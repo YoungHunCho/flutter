@@ -1,5 +1,7 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:english_words/english_words.dart';
+import 'package:todays_exercise/home.dart';
+
 void main() =>  runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -7,115 +9,45 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "hello world",
-      home: RandomWords(),
-      // home: Scaffold(
-      //   appBar: AppBar(
-      //     title: Text("hello world"),
-      //   ),
-      //   body: Center(
-      //     child: RandomWords(),
-      //   ),
-      // ),
-      theme: ThemeData(
-        primaryColor: Colors.white,
-      ),
+      home: SplashScreen(),
+      routes: <String, WidgetBuilder>{
+        '/HomeScreen': (BuildContext context) => RandomWords()
+      },
     );
   }
+  
 }
 
-class RandomWords extends StatefulWidget{
+class SplashScreen extends StatefulWidget {
   @override
-  _RandomWordsState createState() => _RandomWordsState();
-
+  _SplashScreenState createState() => new _SplashScreenState();
 }
 
-class _RandomWordsState extends State<RandomWords>{
-  final _suggestions = <WordPair>[];
-  final _saved = Set<WordPair>();
-  final _biggerFont = TextStyle(fontSize: 18.0);
+class _SplashScreenState extends State<SplashScreen> {
+
+  startTime() async {
+    var _duration = new Duration(seconds: 4);
+    return new Timer(_duration, navigationPage);
+  }
+
+  void navigationPage() {
+    Navigator.of(context).pushReplacementNamed('/HomeScreen');
+    // Navigator.of(context).pushReplacement(RandomWords());
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    startTime();
+  }
+
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Startup Name Generator'),
-        actions: [
-          IconButton(icon: Icon(Icons.list), onPressed: _pushSaved),
-        ],
+    return new Scaffold(
+      backgroundColor: Colors.yellow,
+      body: new Center(
+        child:Text("Asdfasdf"),
       ),
-      body: _buildSuggestions(),
-    );
-  } 
-
-  void _pushSaved() {
-    Navigator.of(context).push(
-      MaterialPageRoute<void>(
-        // NEW lines from here...
-        builder: (BuildContext context) {
-          final tiles = _saved.map(
-            (WordPair pair) {
-              return ListTile(
-                title: Text(
-                  pair.asPascalCase,
-                  style: _biggerFont,
-                ),
-              );
-            },
-          );
-          final divided = ListTile.divideTiles(
-            context: context,
-            tiles: tiles,
-          ).toList();
-
-          return Scaffold(
-            appBar: AppBar(
-              title: Text('Saved Suggestions'),
-            ),
-            body: ListView(children: divided),
-          );
-        }, // ...to here.
-      ),
-    );
-  }
-
-  Widget _buildSuggestions() {
-    return ListView.builder(
-      padding: EdgeInsets.all(16.0),
-      itemBuilder: (context, i){
-        if (i.isOdd) return Divider();
-
-        final index = i ~/ 2;
-        if (index >= _suggestions.length){
-          // print(_suggestions.length);
-          _suggestions.addAll(generateWordPairs().take(10));
-        }
-        return _buildRow(_suggestions[index]);
-      });
-  }
-
-  Widget _buildRow(WordPair pair) {
-    final alreadySaved = _saved.contains(pair);
-    return ListTile(
-      title: Text(
-        pair.asPascalCase,
-        style: _biggerFont,
-      ),
-      trailing: Icon(
-        alreadySaved ? Icons.favorite : Icons.favorite_border,
-        color: alreadySaved? Colors.red : null,
-      ),
-      onTap: (){
-        setState((){
-          if (alreadySaved){
-            _saved.remove(pair);
-          }else{
-            _saved.add(pair);
-          }
-        });
-      },
-      
     );
   }
 }
-
