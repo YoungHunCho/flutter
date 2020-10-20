@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todays_exercise/placeholder_widget.dart';
+import 'package:cupertino_icons/cupertino_icons.dart';
 
 class Home extends StatelessWidget {
   // This widget is the root of your application.
@@ -44,25 +44,29 @@ class _HomeState extends State<HomeState>{
         //  fixedColor: Colors.grey,
         items: [
           BottomNavigationBarItem(
-            icon: new Icon(Icons.account_circle),
-            label: 'Home',
+            icon: new Icon(Icons.fitness_center),
+            label: '운동',
           ),
           BottomNavigationBarItem(
             icon: new Icon(Icons.play_circle_filled),
-            label: 'Home1',
+            label: '루틴',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.alarm),
-            label: 'Home2',
+            icon: Icon(Icons.all_inclusive),
+            label: '기록',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Home3',
+            icon: Icon(Icons.insert_chart),
+            label: '통계',
           ),
-          // BottomNavigationBarItem(
-          //   icon: Icon(Icons.save),
-          //   label: 'Home4',
-          // )
+          BottomNavigationBarItem(
+            icon: Icon(Icons.show_chart),
+            label: '몸무계',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: '설정',
+          ),
         ],
       ),
       body: _children[selectedIdx],
