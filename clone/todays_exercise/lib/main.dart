@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: SplashScreen(),
       routes: <String, WidgetBuilder>{
-        '/HomeScreen': (BuildContext context) => RandomWords()
+        '/HomeScreen': (BuildContext context) => Home()
       },
     );
   }
@@ -44,9 +44,9 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      backgroundColor: Colors.yellow,
+      backgroundColor: Colors.white,
       body: new Center(
-        child:Text("Asdfasdf"),
+        child:Text("오늘의 운동", style: TextStyle(color: Colors.blue,fontSize: 30.0),),
       ),
     );
   }
