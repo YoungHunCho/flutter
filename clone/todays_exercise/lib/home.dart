@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cupertino_icons/cupertino_icons.dart';
+import 'package:todays_exercise/placeholder_widget.dart';
 
 class Home extends StatelessWidget {
   // This widget is the root of your application.
