@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:todays_exercise/placeholder_widget.dart';
 
 class Home extends StatelessWidget {
   // This widget is the root of your application.
@@ -21,6 +21,12 @@ class HomeState extends StatefulWidget{
 
 class _HomeState extends State<HomeState>{
   int selectedIdx = 0;
+  final List<Widget> _children = [
+    PlaceholderWidget(Colors.white),
+    PlaceholderWidget(Colors.deepOrange),
+    PlaceholderWidget(Colors.green),
+    PlaceholderWidget(Colors.cyan)
+  ];
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -59,6 +65,7 @@ class _HomeState extends State<HomeState>{
           // )
         ],
       ),
+      body: _children[selectedIdx],
     );
   }
   void onItemTapped(int index) {
