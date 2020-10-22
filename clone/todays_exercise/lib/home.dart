@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todays_exercise/placeholder_widget.dart';
+import 'package:todays_exercise/exercise.dart';
+import 'package:todays_exercise/routine.dart';
 
 class Home extends StatelessWidget {
   // This widget is the root of your application.
@@ -22,8 +24,8 @@ class HomeState extends StatefulWidget{
 class _HomeState extends State<HomeState>{
   int selectedIdx = 0;
   final List<Widget> _children = [
-    PlaceholderWidget(Colors.white),
-    PlaceholderWidget(Colors.deepOrange),
+    Exercise(),
+    Routine(),
     PlaceholderWidget(Colors.green),
     PlaceholderWidget(Colors.cyan)
   ];
@@ -48,11 +50,11 @@ class _HomeState extends State<HomeState>{
             label: '운동',
           ),
           BottomNavigationBarItem(
-            icon: new Icon(Icons.play_circle_filled),
+            icon: new Icon(Icons.all_inclusive),
             label: '루틴',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.all_inclusive),
+            icon: Icon(Icons.assignment),
             label: '기록',
           ),
           BottomNavigationBarItem(
