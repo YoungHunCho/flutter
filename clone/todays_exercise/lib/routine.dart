@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 
-
 class Routine extends StatefulWidget{
   @override
   _RoutineState createState() => new _RoutineState();
 }
 
 class _RoutineState extends State<Routine>{
+
+
   int selected_type = 0;
   var TYPE = ["루틴", "운동"];
 
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
+      
       length: 2,
       child: Scaffold(
         // backgroundColor: Colors.red,
@@ -36,6 +38,9 @@ class _RoutineState extends State<Routine>{
             ),
           ],
           bottom: TabBar(
+            onTap: onItemTapped,
+
+            labelStyle: TextStyle(fontSize: 20,),
             labelColor: Colors.blue,
             unselectedLabelColor: Colors.grey,
             tabs: [
@@ -45,6 +50,7 @@ class _RoutineState extends State<Routine>{
           ),
         ),
         body: TabBarView(
+          physics: NeverScrollableScrollPhysics(),
           children: [
             Text("1"),
             Text("2"),
@@ -53,4 +59,23 @@ class _RoutineState extends State<Routine>{
       ),
     );
   }
+
+  void onAddTapped(){
+
+  }
+
+  void onItemTapped(int index) {
+    setState(() {
+      selected_type = index;
+    });
+  }
+}
+
+
+class RoutineDetail extends StatefulWidget{
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+  }
+
 }
