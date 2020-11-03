@@ -41,6 +41,7 @@ class _RoutineState extends State<Routine>{
               labelColor: Colors.blue,
               unselectedLabelColor: Colors.grey,
                 
+              
               tabs: [
                 Tab(text: _type[0]),
                 Tab(text: _type[1]),
@@ -50,10 +51,10 @@ class _RoutineState extends State<Routine>{
               border: Border(
                 top: BorderSide(
                   color: Colors.grey,
-                  width: 30.5,
+                  width: 0.5,
                 ),
                 bottom: BorderSide(
-                  color: Colors.red,
+                  color: Colors.grey,
                   width: 1.5,
                 )
               )
@@ -89,7 +90,7 @@ class DecoratedTabBar extends StatelessWidget implements PreferredSizeWidget{
     // TODO: implement build
     return Stack(
       children: [
-        Positioned(child: Container(decoration: decoration,)),
+        Positioned.fill(child: Container(decoration: decoration,)),
         tabBar,
       ],
     );
