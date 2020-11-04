@@ -27,7 +27,9 @@ class _HomeState extends State<HomeState>{
     Exercise(),
     Routine(),
     PlaceholderWidget(Colors.green),
-    PlaceholderWidget(Colors.cyan)
+    PlaceholderWidget(Colors.cyan),
+    PlaceholderWidget(Colors.black26),
+    PlaceholderWidget(Colors.lightGreen),
   ];
   @override
   Widget build(BuildContext context) {
@@ -63,7 +65,7 @@ class _HomeState extends State<HomeState>{
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.show_chart),
-            label: '몸무계',
+            label: '몸무게',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),

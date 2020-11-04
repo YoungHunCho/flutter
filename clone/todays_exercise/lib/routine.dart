@@ -21,7 +21,10 @@ class _RoutineState extends State<Routine>{
           elevation: 0,
           actions: <Widget>[
             InkWell(
-              child: Text(""),
+              child: Container(
+                padding: EdgeInsets.all(12),
+                child: Text("가나", style: TextStyle(fontSize: 15, color: Colors.blue)),
+              ),
               onTap: (){
               },
             ),
